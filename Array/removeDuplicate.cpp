@@ -5,12 +5,13 @@ using namespace std;
 class Solution
 {
 public:
-    int removeDuplicates(vector<int> &nums)
+    int removeDuplicates(int nums[5])
     {
+
         int count = 0;
-        for (int i = 0; i < nums.size(); i++)
+        for (int i = 0; i < 5; i++)
         {
-            if (i < nums.size() - 1 && nums[i] == nums[i + 1])
+            if (i < 5 - 1 && nums[i] == nums[i + 1])
             {
                 continue;
             }
@@ -22,3 +23,13 @@ public:
         return count;
     }
 };
+int main()
+{
+
+    int nums[] = {1, 2, 2, 3, 3};
+
+    Solution s1;
+    cout << s1.removeDuplicates(nums) << endl;
+
+    return 0;
+}
