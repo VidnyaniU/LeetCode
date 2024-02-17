@@ -40,14 +40,36 @@ void bubbleSort(int nums[], int n)
 {
     for (int i = n - 1; i >= 1; i--)
     {
+        int didSwap = 0;
         for (int j = 0; j <= i - 1; j++)
         {
             if (nums[j] > nums[j + 1])
             {
                 swap(nums[j], nums[j + 1]);
+                didSwap = 1;
             }
         }
+        // some optimization : if there is no swap done in the first iteration that means the array is already sorted.
+        if (didSwap = 0)
+        {
+            break;
+        }
     }
+    display(nums, n);
+}
+void insertionSort(int nums[], int n)
+{
+    for (int i = 0; i <= n - 1; i++)
+    {
+        int j = i;
+        while (j > 0 && nums[j - 1] > nums[j])
+        {
+            // left element is small
+            swap(nums[j - 1], nums[j]);
+            j--;
+        }
+    }
+
     display(nums, n);
 }
 int main()
@@ -60,6 +82,7 @@ int main()
 
     // selectionSort(nums, n);
 
-    bubbleSort(nums, n);
+    // bubbleSort(nums, n);
+    selectionSort(nums, n);
     return 0;
 }
