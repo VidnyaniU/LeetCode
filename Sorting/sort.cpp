@@ -36,7 +36,20 @@ void selectionSort(int nums[], int n)
 
     display(nums, n);
 }
-
+void bubbleSort(int nums[], int n)
+{
+    for (int i = n - 1; i >= 1; i--)
+    {
+        for (int j = 0; j <= i - 1; j++)
+        {
+            if (nums[j] > nums[j + 1])
+            {
+                swap(nums[j], nums[j + 1]);
+            }
+        }
+    }
+    display(nums, n);
+}
 int main()
 {
     int nums[] = {2, 1, 7, 8, 5, 3, 9};
@@ -45,7 +58,8 @@ int main()
     display(nums, n);
     cout << "After Sorting: " << endl;
 
-    selectionSort(nums, n);
+    // selectionSort(nums, n);
 
+    bubbleSort(nums, n);
     return 0;
 }
