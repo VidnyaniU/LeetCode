@@ -118,6 +118,47 @@ void mergeSort(vector<int> &nums, int low, int high)
     mergeSort(nums, mid + 1, high); // second half recursively
     merge(nums, low, mid, high);    // compare and merge
 }
+
+// this function will select and place the pivot in the correct place and return the partition index
+int partition(vector<int> &nums, int low, int high)
+{
+
+    int i = low, j = high;
+    int pivot = low; // we are considering pivot to be the first element
+
+    while (i < j) // until they cross each other
+    {
+        // i will keep moving from the left until it finds element greater than pivot
+        while (nums[i] <= nums[pivot] && i < high)
+        {
+            i++;
+        }
+
+        // j will keep moving from the right until it finds element smaller than pivot
+        while (nums[j] > nums[pivot] && j > low)
+        {
+            j--;
+        }
+
+        // swapping the smaller and greater elements
+        if (i < j)
+        {
+            swap(nums[i], nums[j]);
+        }
+    }
+    swap(nums[pivot], nums[j]); // placing the pivot element at the correct position
+    return j;
+}
+void quickSort(vector<int> &nums, int low, int high)
+{
+    if (low < high) // array has more than two elements
+    {
+        int p = partition(nums, low, high);
+        quickSort(nums, low, p - 1);
+        quickSort(nums, p + 1, high);
+    }
+}
+
 int main()
 {
     vector<int> nums = {2, 1, 7, 8, 5, 3, 9};
@@ -132,6 +173,7 @@ int main()
     // selectionSort(nums, n);
     // bubbleSort(nums, n);
     // insertionSort(nums, n);
+    quickSort(nums, 0, n - 1);
     display(nums, n);
 
     return 0;
