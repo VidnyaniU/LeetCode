@@ -9,6 +9,8 @@ void display(vector<int> &nums, int n)
     }
     cout << endl;
 }
+
+//swap 
 void swap(int *x, int *y)
 {
     int temp = *x;
@@ -211,6 +213,23 @@ void bubbleSortRecur(vector<int> &nums, int n)
     bubbleSortRecur(nums, n - 1);
 }
 
+// recursive insertion sort
+void insertionSortRecur(vector<int> &nums, int start, int end)
+{
+    if (start == end)
+    {
+        return;
+    }
+    int j = start;
+    while (j > 0 && nums[j - 1] > nums[j])
+    {
+        swap(nums[j - 1], nums[j]);
+        j--;
+    }
+
+    insertionSortRecur(nums, start + 1, end);
+}
+
 int main()
 {
     vector<int> nums = {2, 1, 7, 8, 5, 3, 9};
@@ -221,13 +240,14 @@ int main()
     display(nums, n);
     cout << "After Sorting: " << endl;
     // mergeSort(nums, 0, n - 1);
-
     // selectionSort(nums, n);
     // bubbleSort(nums, n);
     // insertionSort(nums, n);
     // quickSort(nums, 0, n - 1);
     // selectionSortRecur(nums, 0, n);
-    bubbleSortRecur(nums, n);
+    // bubbleSortRecur(nums, n);
+
+    insertionSortRecur(nums, 0, n - 1);
     display(nums, n);
 
     return 0;
