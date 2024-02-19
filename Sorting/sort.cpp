@@ -15,6 +15,8 @@ void swap(int *x, int *y)
     *x = *y;
     *y = temp;
 }
+
+// selection sort
 void selectionSort(vector<int> &nums, int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -34,6 +36,8 @@ void selectionSort(vector<int> &nums, int n)
         }
     }
 }
+
+// bubble sort
 void bubbleSort(vector<int> &nums, int n)
 {
     for (int i = n - 1; i >= 1; i--)
@@ -54,6 +58,8 @@ void bubbleSort(vector<int> &nums, int n)
         }
     }
 }
+
+// insertion sort
 void insertionSort(vector<int> &nums, int n)
 {
     for (int i = 0; i <= n - 1; i++)
@@ -68,6 +74,7 @@ void insertionSort(vector<int> &nums, int n)
     }
 }
 
+// merge sort
 void merge(vector<int> &nums, int low, int mid, int high)
 {
     vector<int> tempArr; // to store the elements temporarily
@@ -120,7 +127,8 @@ void mergeSort(vector<int> &nums, int low, int high)
     merge(nums, low, mid, high);    // compare and merge
 }
 
-// this function will select and place the pivot in the correct place and return the partition index
+// quick sort
+//  this function will select and place the pivot in the correct place and return the partition index
 int partition(vector<int> &nums, int low, int high)
 {
 
@@ -170,7 +178,6 @@ int minIndex(vector<int> &nums, int start, int end)
     int minIdx = minIndex(nums, start + 1, end);
     return (nums[start] < nums[minIdx]) ? start : minIdx;
 }
-
 void selectionSortRecur(vector<int> &nums, int start, int end)
 {
     if (start == end)
@@ -184,6 +191,26 @@ void selectionSortRecur(vector<int> &nums, int start, int end)
 
     selectionSortRecur(nums, start + 1, end);
 }
+
+// recursive bubble sort
+void bubbleSortRecur(vector<int> &nums, int n)
+{
+
+    if (n == 1)
+    {
+        return;
+    }
+    for (int j = 1; j <= n - 2; j++)
+    {
+        if (nums[j] < nums[j - 1])
+        {
+            swap(nums[j], nums[j - 1]);
+        }
+    }
+
+    bubbleSortRecur(nums, n - 1);
+}
+
 int main()
 {
     vector<int> nums = {2, 1, 7, 8, 5, 3, 9};
@@ -199,7 +226,8 @@ int main()
     // bubbleSort(nums, n);
     // insertionSort(nums, n);
     // quickSort(nums, 0, n - 1);
-    selectionSortRecur(nums, 0, n);
+    // selectionSortRecur(nums, 0, n);
+    bubbleSortRecur(nums, n);
     display(nums, n);
 
     return 0;
