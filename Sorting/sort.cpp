@@ -67,6 +67,7 @@ void insertionSort(vector<int> &nums, int n)
         }
     }
 }
+
 void merge(vector<int> &nums, int low, int mid, int high)
 {
     vector<int> tempArr; // to store the elements temporarily
@@ -159,6 +160,30 @@ void quickSort(vector<int> &nums, int low, int high)
     }
 }
 
+// recursive selection sort
+int minIndex(vector<int> &nums, int start, int end)
+{
+    if (start == end)
+    {
+        return start;
+    }
+    int minIdx = minIndex(nums, start + 1, end);
+    return (nums[start] < nums[minIdx]) ? start : minIdx;
+}
+
+void selectionSortRecur(vector<int> &nums, int start, int end)
+{
+    if (start == end)
+        return;
+
+    int minIdx = minIndex(nums, start, end);
+    if (minIdx != start)
+    {
+        swap(nums[start], nums[minIdx]);
+    }
+
+    selectionSortRecur(nums, start + 1, end);
+}
 int main()
 {
     vector<int> nums = {2, 1, 7, 8, 5, 3, 9};
@@ -168,12 +193,13 @@ int main()
     cout << "Before Sorting: " << endl;
     display(nums, n);
     cout << "After Sorting: " << endl;
-    mergeSort(nums, 0, n - 1);
+    // mergeSort(nums, 0, n - 1);
 
     // selectionSort(nums, n);
     // bubbleSort(nums, n);
     // insertionSort(nums, n);
-    quickSort(nums, 0, n - 1);
+    // quickSort(nums, 0, n - 1);
+    selectionSortRecur(nums, 0, n);
     display(nums, n);
 
     return 0;
