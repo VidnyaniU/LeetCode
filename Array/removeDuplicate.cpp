@@ -5,28 +5,26 @@ using namespace std;
 class Solution
 {
 public:
-    int removeDuplicates(int nums[5])
+    int removeDuplicates(vector<int> &nums)
     {
-
-        int count = 0;
-        for (int i = 0; i < 5; i++)
+        int n = nums.size();
+        int i = 0;
+        for (int j = 1; j < n; j++)
         {
-            if (i < 5 - 1 && nums[i] == nums[i + 1])
+            if (nums[j] != nums[i])
             {
-                continue;
-            }
-            else
-            {
-                nums[count++] = nums[i];
+                nums[i + 1] = nums[j];
+                i++;
             }
         }
-        return count;
+
+        return i + 1;
     }
 };
 int main()
 {
 
-    int nums[] = {1, 2, 2, 3, 3};
+    vector<int> nums = {1, 2, 2, 3, 3};
 
     Solution s1;
     cout << s1.removeDuplicates(nums) << endl;
