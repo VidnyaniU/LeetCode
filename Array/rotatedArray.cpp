@@ -24,7 +24,7 @@ void reverse(vector<int> &nums, int start, int end)
         end--;
     }
 }
-void rotateArrayBykPlaces(vector<int> &nums, int size, int k)
+void leftRotateArrayBykPlaces(vector<int> &nums, int size, int k)
 {
 
     // brute force approach
@@ -63,18 +63,35 @@ void rotateArrayBykPlaces(vector<int> &nums, int size, int k)
     reverse(nums, 0, size - 1);
 }
 
+void rightRotateArrayBykPlaces(vector<int> &nums, int size, int k)
+{
+    //if k is multiple of size of array no rotation  
+    if (k > size)
+    {
+        k = k % size;
+    }
+
+    reverse(nums.begin(), nums.end());
+    reverse(nums.begin() + k, nums.end());
+    reverse(nums.begin(), nums.begin() + k);
+}
 int main()
 {
     vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
     int size = nums.size();
     // rotateArrayByOnePLace(nums, size);
     int k = 3;
-    rotateArrayBykPlaces(nums, size, k);
+    leftRotateArrayBykPlaces(nums, size, k);
 
     for (int i = 0; i < size; i++)
     {
         cout << nums[i] << " ";
     }
-
+    rightRotateArrayBykPlaces(nums, size, k);
+    cout << endl;
+    for (int i = 0; i < size; i++)
+    {
+        cout << nums[i] << " ";
+    }
     return 0;
 }
