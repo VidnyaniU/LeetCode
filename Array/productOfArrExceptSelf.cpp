@@ -5,12 +5,24 @@ using namespace std;
 vector<int> productExceptSelfBrute(vector<int> &nums)
 {
     int n = nums.size();
-
     vector<int> ans(n);
+    for (int i = 0; i < n; i++)
+    {
+        int mul = 1;
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                continue;
+            }
+            mul *= nums[j];
+        }
+        ans.push_back(mul);
+    }
 
     return ans;
 }
-// using DP
+// usingp prefix and postfix
 vector<int> productExceptSelf(vector<int> &nums)
 {
 
@@ -37,7 +49,9 @@ vector<int> productExceptSelf(vector<int> &nums)
 int main()
 {
     vector<int> nums = {1, 2, 3, 4};
+    // vector<int> ans = productExceptSelfBrute(nums);
     vector<int> ans = productExceptSelf(nums);
+
     for (int i = 0; i < nums.size(); i++)
     {
         cout << ans[i] << endl;
