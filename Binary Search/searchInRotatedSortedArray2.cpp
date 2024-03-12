@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+// search in rotated sorted array with duplicates
 bool search(vector<int> &nums, int target)
 {
     int n = nums.size();
