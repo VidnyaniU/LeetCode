@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+// single element which occurs only once and others twice in a sorted array
 int singleNonDuplicate(vector<int> &nums)
 {
     int n = nums.size();
