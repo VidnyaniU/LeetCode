@@ -13,11 +13,11 @@ bool isPossible(vector<int> &bloomDay, int days, int m, int k)
         }
         else
         {
-            noOfBouquets += counter / m;
+            noOfBouquets += counter / k;
             counter = 0;
         }
     }
-    noOfBouquets += counter / m;
+    noOfBouquets += counter / k;
 
     return noOfBouquets >= m;
 }
