@@ -49,7 +49,7 @@ int main()
     vector<int> ans = twoSumHash(nums, target);
     for (int i = 0; i < nums.size(); i++)
     {
-        cout << ans[i] << endl;
+        cout << ans[i] << endl; 
     }
 
     return 0;

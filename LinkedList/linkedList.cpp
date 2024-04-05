@@ -31,6 +31,18 @@ Node *convertArrToLL(vector<int> &arr)
 
     return head;
 }
+
+Node *deleteFromHead(Node *head)
+{
+    if (head == NULL)
+        return head;
+    Node *temp = head; // store current head in temp
+    head = head->next; // move head to the next
+
+    delete temp; // delete the previous head
+
+    return head; // return new head
+}
 int main()
 {
     // Node *head = new Node(2); // object of node
@@ -53,7 +65,8 @@ int main()
     cout << endl
          << "Length of the Linked List :: " << cnt << endl;
 
-    // cout << head->next->data;
+    Node *newHead = deleteFromHead(head);
+    cout << newHead->data << endl;
 
     return 0;
 }
