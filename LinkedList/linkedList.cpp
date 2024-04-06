@@ -72,6 +72,42 @@ Node *deleteFromTail(Node *head)
 
     return head; // returns head
 }
+
+Node *deleteK(Node *head, int k)
+{
+    // if the linked list is empty
+    if (head == NULL)
+        return head;
+    // if we want to delete head
+    if (k == 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+
+        return head;
+    }
+
+    // to delete any node
+    int cnt = 0;
+    Node *temp = head;
+    Node *prev = NULL;
+
+    while (temp != NULL)
+    {
+        cnt++;
+        if (cnt == k)
+        {
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    return head;
+}
 int main()
 {
     // Node *head = new Node(2); // object of node
@@ -97,7 +133,8 @@ int main()
     // Node *newHead = deleteFromHead(head);
     // cout << newHead->data << endl;
 
-    head = deleteFromTail(head);
+    // head = deleteFromTail(head);
+    head = deleteK(head, 3);
     printLL(head);
 
     return 0;
