@@ -108,6 +108,41 @@ Node *deleteK(Node *head, int k)
 
     return head;
 }
+
+// remove if the value is passed
+Node *deleteK(Node *head, int val)
+{
+    // if the linked list is empty
+    if (head == NULL)
+        return head;
+    // if we want to delete head
+    if (head->data == val)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+
+        return head;
+    }
+
+    // to delete any node
+    Node *temp = head;
+    Node *prev = NULL;
+
+    while (temp != NULL)
+    {
+        if (temp->data == val)
+        {
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    return head;
+}
 int main()
 {
     // Node *head = new Node(2); // object of node
