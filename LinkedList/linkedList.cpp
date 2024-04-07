@@ -147,7 +147,7 @@ Node *deleteVal(Node *head, int val)
 // INSERTION IN LL
 Node *insertAtHead(Node *head, int val)
 {
-    return new Node(val);
+    return new Node(val, head);
 }
 
 Node *insertAtTail(Node *head, int val)
@@ -228,7 +228,8 @@ int main()
     // head = deleteFromTail(head);
     // head = deleteK(head, 3);
     head = insertAtHead(head, 100);
-
+    head = insertAtTail(head, 200);
+    head = insertAtK(head, 150, 4);
     printLL(head);
 
     return 0;
