@@ -110,7 +110,7 @@ Node *deleteK(Node *head, int k)
 }
 
 // remove if the value is passed
-Node *deleteK(Node *head, int val)
+Node *deleteVal(Node *head, int val)
 {
     // if the linked list is empty
     if (head == NULL)
@@ -143,6 +143,63 @@ Node *deleteK(Node *head, int val)
 
     return head;
 }
+
+// INSERTION IN LL
+Node *insertAtHead(Node *head, int val)
+{
+    return new Node(val);
+}
+
+Node *insertAtTail(Node *head, int val)
+{
+
+    // ll in empty
+    if (head == NULL)
+        return new Node(val);
+
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = new Node(val);
+
+    return head;
+}
+
+Node *insertAtK(Node *head, int val, int k)
+{
+    // case 1 : if ll is empty
+    if (head == NULL)
+    {
+        if (k == 1)
+            return new Node(val);
+        else
+            return NULL;
+    }
+
+    // case 2: if k =1
+    if (k == 1)
+        return new Node(val);
+
+    // case 3: k = 2 to n+1
+    int cnt = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cnt++;
+        if (cnt == k - 1)
+        {
+            Node *newNode = new Node(val);
+            newNode->next = temp->next;
+            temp->next = newNode;
+            break;
+        }
+        temp = temp->next;
+    }
+
+    return head;
+}
 int main()
 {
     // Node *head = new Node(2); // object of node
@@ -169,7 +226,9 @@ int main()
     // cout << newHead->data << endl;
 
     // head = deleteFromTail(head);
-    head = deleteK(head, 3);
+    // head = deleteK(head, 3);
+    head = insertAtHead(head, 100);
+
     printLL(head);
 
     return 0;
