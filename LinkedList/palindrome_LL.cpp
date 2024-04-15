@@ -18,7 +18,16 @@ public:
         data = data1;
     }
 };
-
+Node *reverseLLRecur(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    Node *newHead = reverseLLRecur(head->next);
+    Node *front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
+}
 // naive approach
 bool isPalindrome(Node *head)
 {
@@ -40,8 +49,35 @@ bool isPalindrome(Node *head)
 
     return true;
 }
-int main()
-{
 
-    return 0;
+// Tortoise-Hare method
+bool isPalindromeTH(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+        return true; // edge case
+    Node *slow = head;
+    Node *fast = head;
+    while (fast->next != NULL && fast->next->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    Node *newHead = reverseLLRecur(slow->next); // reverse the second half
+
+    // use two pointers to compare
+    Node *first = head;
+    Node *second = newHead;
+
+    while (second != NULL)
+    {
+        if (first->data != second->data)
+        {
+            reverseLLRecur(newHead); // reverse back to original
+            return false;
+        }
+        first = first->next;
+        second = second->next;
+    }
+    reverseLLRecur(newHead); // reverse back to original
+    return true;
 }

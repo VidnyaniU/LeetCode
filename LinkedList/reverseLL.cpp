@@ -58,7 +58,7 @@ Node *reverseLLRecur(Node *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    Node *newHead = reverseLLIter(head->next);
+    Node *newHead = reverseLLRecur(head->next);
     Node *front = head->next;
     front->next = head;
     head->next = NULL;
