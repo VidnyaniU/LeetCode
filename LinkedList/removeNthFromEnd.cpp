@@ -59,4 +59,3 @@ ListNode *removeN(ListNode *head, int n)
     delete delNode;
     return temp->next;
 }
-}
