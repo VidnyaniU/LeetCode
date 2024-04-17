@@ -1,25 +1,19 @@
 #include <bits/stdc++.h>
+#include "linkedList.hpp"
 using namespace std;
-class Node
+
+ListNode ::ListNode(int data1, ListNode *next1)
 {
+    data = data1;
+    next = next1;
+}
 
-public:
-    int data;
-    Node *next;
+ListNode::ListNode(int data1)
+{
+    data = data1;
+}
 
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
-
-void printLL(Node *head)
+void ListNode ::printLL(ListNode *head)
 {
     while (head != NULL)
     {
@@ -29,13 +23,13 @@ void printLL(Node *head)
 
     cout << "NULL" << endl;
 }
-Node *convertArrToLL(vector<int> &arr)
+ListNode *ListNode ::convertArrToLL(vector<int> &arr)
 {
-    Node *head = new Node(arr[0]);
-    Node *mover = head; // at first mover will point to head
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *mover = head; // at first mover will point to head
     for (int i = 1; i < arr.size(); i++)
     {
-        Node *temp = new Node(arr[i]);
+        ListNode *temp = new ListNode(arr[i]);
         mover->next = temp; // in the first iteration head->next will point to arr[1] and so on
         mover = temp;       // mover will move with temp
     }
@@ -44,25 +38,25 @@ Node *convertArrToLL(vector<int> &arr)
 }
 
 // DELETION IN LL
-Node *deleteFromHead(Node *head)
+ListNode *ListNode ::deleteFromHead(ListNode *head)
 {
     if (head == NULL)
         return head;
-    Node *temp = head; // store current head in temp
-    head = head->next; // move head to the next
+    ListNode *temp = head; // store current head in temp
+    head = head->next;     // move head to the next
 
     delete temp; // delete the previous head
 
     return head; // return new head
 }
 
-Node *deleteFromTail(Node *head)
+ListNode *ListNode ::deleteFromTail(ListNode *head)
 {
     // if there is no element or only one element in the linked list
     if (head == NULL || head->next == NULL)
         return NULL;
 
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp->next->next != NULL)
     {
         temp = temp->next;
@@ -73,7 +67,7 @@ Node *deleteFromTail(Node *head)
     return head; // returns head
 }
 
-Node *deleteK(Node *head, int k)
+ListNode *ListNode ::deleteK(ListNode *head, int k)
 {
     // if the linked list is empty
     if (head == NULL)
@@ -81,7 +75,7 @@ Node *deleteK(Node *head, int k)
     // if we want to delete head
     if (k == 1)
     {
-        Node *temp = head;
+        ListNode *temp = head;
         head = head->next;
         delete temp;
 
@@ -90,8 +84,8 @@ Node *deleteK(Node *head, int k)
 
     // to delete any node
     int cnt = 0;
-    Node *temp = head;
-    Node *prev = NULL;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
 
     while (temp != NULL)
     {
@@ -110,7 +104,7 @@ Node *deleteK(Node *head, int k)
 }
 
 // remove if the value is passed
-Node *deleteVal(Node *head, int val)
+ListNode *ListNode ::deleteVal(ListNode *head, int val)
 {
     // if the linked list is empty
     if (head == NULL)
@@ -118,7 +112,7 @@ Node *deleteVal(Node *head, int val)
     // if we want to delete head
     if (head->data == val)
     {
-        Node *temp = head;
+        ListNode *temp = head;
         head = head->next;
         delete temp;
 
@@ -126,8 +120,8 @@ Node *deleteVal(Node *head, int val)
     }
 
     // to delete any node
-    Node *temp = head;
-    Node *prev = NULL;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
 
     while (temp != NULL)
     {
@@ -145,52 +139,52 @@ Node *deleteVal(Node *head, int val)
 }
 
 // INSERTION IN LL
-Node *insertAtHead(Node *head, int val)
+ListNode *ListNode ::insertAtHead(ListNode *head, int val)
 {
-    return new Node(val, head);
+    return new ListNode(val, head);
 }
 
-Node *insertAtTail(Node *head, int val)
+ListNode *ListNode ::insertAtTail(ListNode *head, int val)
 {
 
     // ll in empty
     if (head == NULL)
-        return new Node(val);
+        return new ListNode(val);
 
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
     }
-    temp->next = new Node(val);
+    temp->next = new ListNode(val);
 
     return head;
 }
 
-Node *insertAtK(Node *head, int val, int k)
+ListNode *ListNode ::insertAtK(ListNode *head, int val, int k)
 {
     // case 1 : if ll is empty
     if (head == NULL)
     {
         if (k == 1)
-            return new Node(val);
+            return new ListNode(val);
         else
             return NULL;
     }
 
     // case 2: if k =1
     if (k == 1)
-        return new Node(val);
+        return new ListNode(val);
 
     // case 3: k = 2 to n+1
     int cnt = 0;
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         cnt++;
         if (cnt == k - 1)
         {
-            Node *newNode = new Node(val);
+            ListNode *newNode = new ListNode(val);
             newNode->next = temp->next;
             temp->next = newNode;
             break;
@@ -199,38 +193,4 @@ Node *insertAtK(Node *head, int val, int k)
     }
 
     return head;
-}
-int main()
-{
-    // Node *head = new Node(2); // object of node
-    // cout << head->data << " " << head->next << endl;
-
-    // int cnt = 0;
-
-    // convert array to linked list
-    vector<int> arr = {2, 4, 5, 6};
-    Node *head = convertArrToLL(arr);
-
-    // traverse the linkedlist
-    // Node *temp = head; // DO NOT TAMPER THE HEAD
-    // while (temp)
-    // {
-    //     cout << temp->data << " ";
-    //     temp = temp->next;
-    //     cnt++;
-    // }
-    // cout << endl
-    //      << "Length of the Linked List :: " << cnt << endl;
-
-    // Node *newHead = deleteFromHead(head);
-    // cout << newHead->data << endl;
-
-    // head = deleteFromTail(head);
-    // head = deleteK(head, 3);
-    head = insertAtHead(head, 100);
-    head = insertAtTail(head, 200);
-    head = insertAtK(head, 150, 4);
-    printLL(head);
-
-    return 0;
 }

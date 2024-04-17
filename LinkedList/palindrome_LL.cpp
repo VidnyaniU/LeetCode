@@ -1,37 +1,21 @@
 #include <bits/stdc++.h>
+#include "linkedList.hpp"
 using namespace std;
-class Node
-{
 
-public:
-    int data;
-    Node *next;
-
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
-Node *reverseLLRecur(Node *head)
+ListNode *reverseLLRecur(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    Node *newHead = reverseLLRecur(head->next);
-    Node *front = head->next;
+    ListNode *newHead = reverseLLRecur(head->next);
+    ListNode *front = head->next;
     front->next = head;
     head->next = NULL;
     return newHead;
 }
 // naive approach
-bool isPalindrome(Node *head)
+bool isPalindrome(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     stack<int> st;
     while (temp != NULL)
     {
@@ -51,22 +35,22 @@ bool isPalindrome(Node *head)
 }
 
 // Tortoise-Hare method
-bool isPalindromeTH(Node *head)
+bool isPalindromeTH(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return true; // edge case
-    Node *slow = head;
-    Node *fast = head;
+    ListNode *slow = head;
+    ListNode *fast = head;
     while (fast->next != NULL && fast->next->next != NULL)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
-    Node *newHead = reverseLLRecur(slow->next); // reverse the second half
+    ListNode *newHead = reverseLLRecur(slow->next); // reverse the second half
 
     // use two pointers to compare
-    Node *first = head;
-    Node *second = newHead;
+    ListNode *first = head;
+    ListNode *second = newHead;
 
     while (second != NULL)
     {

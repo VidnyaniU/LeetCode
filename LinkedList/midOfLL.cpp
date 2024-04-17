@@ -1,27 +1,11 @@
 #include <bits/stdc++.h>
+#include "linkedList.hpp"
 using namespace std;
-class Node
-{
 
-public:
-    int data;
-    Node *next;
-
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
 // Naive approach
-Node *midLL(Node *head)
+ListNode *midLL(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     int cnt = 0;
     while (temp != NULL)
     {
@@ -30,21 +14,21 @@ Node *midLL(Node *head)
     }
 
     temp = head;
-    int midNode = (cnt / 2) + 1;
+    int midListNode = (cnt / 2) + 1;
     while (temp != NULL)
     {
-        midNode = midNode - 1;
-        if (midNode == 0)
+        midListNode = midListNode - 1;
+        if (midListNode == 0)
             break;
         temp = temp->next;
     }
     return temp;
 }
 // Tortoise-Hare approach
-Node *middleNode(Node *head)
+ListNode *middleListNode(ListNode *head)
 {
-    Node *slow = head;
-    Node *fast = head;
+    ListNode *slow = head;
+    ListNode *fast = head;
     while (fast != NULL && fast->next != NULL)
     {
         slow = slow->next;

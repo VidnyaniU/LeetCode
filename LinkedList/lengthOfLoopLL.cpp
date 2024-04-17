@@ -1,31 +1,14 @@
 #include <bits/stdc++.h>
+#include "linkedList.hpp"
 using namespace std;
-class Node
-{
-
-public:
-    int data;
-    Node *next;
-
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
 
 // Naive approach using map
-int findLen(Node *head)
+int findLen(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     int timer = 1;
     int value;
-    map<Node *, int> mpp;
+    map<ListNode *, int> mpp;
     while (temp != NULL)
     {
         if (mpp.find(temp) != mpp.end())
@@ -41,10 +24,10 @@ int findLen(Node *head)
     return 0;
 }
 // Optimised approach using Tortoise-Hare method
-int fineLenTH(Node *head)
+int fineLenTH(ListNode *head)
 {
-    Node *slow = head;
-    Node *fast = head;
+    ListNode *slow = head;
+    ListNode *fast = head;
     int cnt = 0;
     while (fast != NULL && fast->next != NULL)
     {

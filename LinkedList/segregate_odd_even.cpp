@@ -1,33 +1,16 @@
 #include <bits/stdc++.h>
-
+#include "linkedList.hpp"
 using namespace std;
-class Node
-{
 
-public:
-    int data;
-    Node *next;
-
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
 // optimised
-Node *segregate(Node *head)
+ListNode *segregate(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
 
-    Node *odd = head;
-    Node *even = head->next;
-    Node *evenHead = head->next; // save it for later use
+    ListNode *odd = head;
+    ListNode *even = head->next;
+    ListNode *evenHead = head->next; // save it for later use
 
     while (even != NULL && even->next != NULL)
     {
@@ -37,6 +20,6 @@ Node *segregate(Node *head)
         odd = odd->next;
         even = even->next;
     }
-    odd->next = evenHead; // last odd node point to first even node
+    odd->next = evenHead; // last odd ListNode point to first even ListNode
     return head;
 }

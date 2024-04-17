@@ -1,29 +1,13 @@
 #include <bits/stdc++.h>
+#include "linkedList.hpp"
 using namespace std;
-class Node
-{
 
-public:
-    int data;
-    Node *next;
-
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-    Node(int data1)
-    {
-        data = data1;
-    }
-};
 // using stack
 
-Node *reverseLLStack(Node *head)
+ListNode *reverseLLStack(ListNode *head)
 {
     stack<int> st;
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         st.push(temp->data);
@@ -40,13 +24,13 @@ Node *reverseLLStack(Node *head)
     return head;
 }
 // iterative approach
-Node *reverseLLIter(Node *head)
+ListNode *reverseLLIter(ListNode *head)
 {
-    Node *temp = head;
-    Node *prev = NULL;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
     while (temp != NULL)
     {
-        Node *front = temp->next;
+        ListNode *front = temp->next;
         temp->next = prev;
         prev = temp;
         temp = front;
@@ -54,12 +38,12 @@ Node *reverseLLIter(Node *head)
 
     return prev;
 }
-Node *reverseLLRecur(Node *head)
+ListNode *reverseLLRecur(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    Node *newHead = reverseLLRecur(head->next);
-    Node *front = head->next;
+    ListNode *newHead = reverseLLRecur(head->next);
+    ListNode *front = head->next;
     front->next = head;
     head->next = NULL;
     return newHead;
