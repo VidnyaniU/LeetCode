@@ -3,30 +3,58 @@ using namespace std;
 class StackArr
 {
 public:
-    int top = -1;
-    vector<int> stack_arr;
+    int ptr = -1;
+    int n = 5; // size of array
+    // vector<int> stack_arr;
+    int *stack_arr = new int(n);
     void push(int x)
     {
-        stack_arr[++top] = x;
+        if (ptr > n)
+            cout << "Stack Overflow!" << endl;
+        else
+        {
+            ptr = ptr + 1;
+            stack_arr[ptr] = x;
+        }
     }
     int top()
     {
-        return stack_arr[top];
+        if (ptr == -1)
+        {
+            cout << "Stack underflow!" << endl;
+            return -1;
+        }
+
+        return stack_arr[ptr];
     }
     int pop()
     {
-        top--;
-        return stack_arr[top + 1];
+        if (ptr == -1)
+        {
+            cout << "Stack underflow!" << endl;
+            return -1;
+        }
+        ptr--;
+        return stack_arr[ptr + 1];
     }
     int size()
     {
-        return top + 1;
+        return ptr + 1; /* code */
     }
     bool isEmpty()
     {
-        if (top == -1)
+        if (ptr == -1)
             return 1;
         else
             return 0;
     }
 };
+int main()
+{
+    StackArr st;
+    st.push(2);
+    cout << st.top() << endl;
+    st.pop();
+    cout << st.top() << endl;
+    return 0;
+}
