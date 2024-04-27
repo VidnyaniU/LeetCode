@@ -3,6 +3,22 @@ using namespace std;
 class MyStack
 {
 public:
+    // using two Queues
+    queue<int> Q1, Q2;
+    void push2Qs(int x)
+    {
+        Q2.push(x);
+        while (!Q1.empty())
+        {
+            Q2.push(Q1.front());
+            Q1.pop();
+        }
+        // swap
+        queue<int> temp = Q1;
+        Q1 = Q2;
+        Q2 = Q1;
+    }
+    // using one Queue
     queue<int> Q;
 
     void push(int x)
