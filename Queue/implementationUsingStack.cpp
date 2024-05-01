@@ -6,7 +6,7 @@ public:
     stack<int> S1;
     stack<int> S2;
     MyQueue()
-    {
+    cout<<"My queue constructor called!"<<endl;
     }
 
     void push(int x)
