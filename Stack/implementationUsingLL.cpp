@@ -8,8 +8,8 @@ class stackLL
   void stackPush(int x)
   {
     ListNode *element = new ListNode(x);
-    element->next = head; // top
-    head = element;
+    element->next = top; // top
+    top = element;
     cout << "Element pushed"
          << "\n";
     size++;
@@ -19,7 +19,7 @@ int stackPop() {
       return -1;
     }
     int topData = top -> data;
-    stackNode * temp = top;
+    ListNode * temp = top;
     top = top -> next;
     delete temp;
     size--;
