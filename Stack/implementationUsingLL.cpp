@@ -1,4 +1,5 @@
 // implementation of stack using LL
+
 #include "linkedList.hpp"
 using namespace std;
 
@@ -12,6 +13,8 @@ public:
     top = NULL;
     size = 0;
   }
+
+  // pushing from head
   void stackPush(int x)
   {
     ListNode *element = new ListNode(x);
