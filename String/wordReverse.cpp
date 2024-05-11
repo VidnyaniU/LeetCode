@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 string reverseWords(string s)
 {
     int size = s.size();
@@ -25,6 +26,8 @@ int main()
 {
     string s = " Hello  World ";
     string ans = reverseWords(s);
+
     cout << ans;
+
     return 0;
 }
