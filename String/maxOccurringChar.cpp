@@ -5,33 +5,38 @@ using namespace std;
 // If more than one character occurs the maximum number of time then print the lexicographically smaller characte
 char maxOccurring(string s)
 {
-    char ans = ' ';
-    int max = INT_MIN;
-    int cnt = 0;
-    int start = 0;
-    int end = s.size() - 1;
-    while (start < end)
+    int arr[26] = {0};
+    for (int i = 0; i < s.length(); i++)
     {
-        for (int i = 0; i <= end; i++)
+        int num = 0;
+        char ch = s[i];
+        if (ch >= 'a' && ch <= 'z')
         {
-            if (s[start] == s[i])
-            {
-                cnt++;
-            }
+            num = ch - 'a';
         }
-        if (cnt >= max && s[start] < ans)
+        else
         {
-            max = cnt;
-            ans = s[start];
+            num = ch - 'A';
         }
-        start++;
+        arr[num]++;
     }
-
-    return ans;
+    // find maximum
+    int maxi = -1;
+    int ans = 0;
+    for (int i = 0; i < 26; i++)
+    {
+        if (arr[i] > maxi)
+        {
+            maxi = arr[i];
+            ans = i;
+        }
+    }
+    int finalAns = 'a' + ans;
+    return finalAns;
 }
 int main()
 {
     string s = "bunn";
-    cout << maxOccurring(s);
+    cout << maxOccurring(s) << endl;
     return 0;
 }
