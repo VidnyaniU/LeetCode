@@ -31,7 +31,7 @@ char maxOccurring(string s)
             ans = i;
         }
     }
-    int finalAns = 'a' + ans;
+    char finalAns = 'a' + ans;
     return finalAns;
 }
 int main()
