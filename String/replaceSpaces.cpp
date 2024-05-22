@@ -9,6 +9,7 @@ string replaceS(string &s)
         {
             ans.push_back('@');
             ans.push_back('4');
+
             ans.push_back('0');
         }
 
@@ -18,6 +19,7 @@ string replaceS(string &s)
 
     return ans;
 }
+
 int main()
 {
     string s = "Banana ate Apple.";
