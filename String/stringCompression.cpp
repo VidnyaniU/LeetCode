@@ -30,3 +30,17 @@ int compress(vector<char> &chars)
     }
     return ansInd;
 }
+
+int main()
+{
+    vector<char> chars;
+    chars.push_back('a');
+    chars.push_back('a');
+    chars.push_back('b');
+    chars.push_back('b');
+    chars.push_back('c');
+    chars.push_back('c');
+
+    cout << compress(chars);
+    return 0;
+}
