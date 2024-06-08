@@ -72,8 +72,6 @@ int main()
     vector<int> arr = {4, 2, 1, 3};
     ListNode *head = ll.convertArrToLL(arr);
     ll.printLL(head);
-    // ListNode *mid = getMid(head);
-    // cout << "Mid is " << mid->data << endl;
 
     cout << "Maximum Twin Sum :: " << pairSum(head) << endl;
     return 0;
