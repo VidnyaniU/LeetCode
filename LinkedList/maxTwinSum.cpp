@@ -65,14 +65,14 @@ int pairSum(ListNode *head)
 
     return maxi;
 }
-int main()
-{
-    ListNode ll(0);
-    // convert array to linked list
-    vector<int> arr = {4, 2, 1, 3};
-    ListNode *head = ll.convertArrToLL(arr);
-    ll.printLL(head);
+// int main()
+// {
+//     ListNode ll(0);
+//     // convert array to linked list
+//     vector<int> arr = {4, 2, 1, 3};
+//     ListNode *head = ll.convertArrToLL(arr);
+//     ll.printLL(head);
 
-    cout << "Maximum Twin Sum :: " << pairSum(head) << endl;
-    return 0;
-}
+//     cout << "Maximum Twin Sum :: " << pairSum(head) << endl;
+//     return 0;
+// }
