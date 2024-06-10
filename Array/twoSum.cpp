@@ -2,7 +2,19 @@
 using namespace std;
 
 // two sum
+vector<int> twoSumBrute(vector<int> &nums, int target)
+{
+    for (int i = 0; i < nums.size() - 1; i++)
+    {
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            if (nums[i] + nums[j] == target)
+                return {i, j};
+        }
+    }
 
+    return {-1, -1};
+}
 // using hashmap T.C.: O(N*log N)
 vector<int> twoSumHash(vector<int> &nums, int target)
 {
@@ -49,7 +61,7 @@ int main()
     vector<int> ans = twoSumHash(nums, target);
     for (int i = 0; i < nums.size(); i++)
     {
-        cout << ans[i] << endl; 
+        cout << ans[i] << endl;
     }
 
     return 0;
