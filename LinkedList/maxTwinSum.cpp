@@ -31,36 +31,26 @@ ListNode *reverseLL(ListNode *head)
 }
 int pairSum(ListNode *head)
 {
-    vector<int> list1;
-    vector<int> list2;
+
     ListNode *temp = head;
     ListNode *mid = getMid(head);
 
-    // paste first half elements
-    while (temp != mid)
-    {
-        list1.push_back(temp->data);
-        temp = temp->next;
-    }
-
     // reverse other half
     ListNode *head2 = reverseLL(mid);
-    while (head2 != NULL)
-    {
-        list2.push_back(head2->data);
-        head2 = head2->next;
-    }
 
     int maxi = INT_MIN;
     int sum = 0;
-    for (int i = 0; i < list1.size(); i++)
+
+    while (head2 != NULL)
     {
-        sum = list1[i] + list2[i];
+        sum = temp->data + head2->data;
         if (sum > maxi)
         {
             maxi = sum;
         }
         sum = 0;
+        temp = temp->next;
+        head2 = head2->next;
     }
 
     return maxi;
