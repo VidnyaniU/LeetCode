@@ -10,7 +10,7 @@ void display(vector<int> &nums, int n)
     cout << endl;
 }
 
-//swap 
+// swap
 void swap(int *x, int *y)
 {
     int temp = *x;
@@ -29,12 +29,12 @@ void selectionSort(vector<int> &nums, int n)
             if (nums[j] < nums[minInd])
             {
                 minInd = j;
-                // swapping
-                if (minInd != i)
-                {
-                    swap(nums[minInd], nums[i]);
-                }
             }
+        }
+        // swapping
+        if (minInd != i)
+        {
+            swap(nums[minInd], nums[i]);
         }
     }
 }
