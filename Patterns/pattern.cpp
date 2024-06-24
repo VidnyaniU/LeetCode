@@ -196,8 +196,33 @@ void pattern19(int n)
         cout << endl;
     }
 }
+
+void pattern20(int n)
+{
+    int space = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        // star
+        for (int j = 1; j <= n - i; j++)
+        {
+            cout << "*";
+        }
+        // space
+        for (int j = 1; j <= space; j++)
+            cout << " ";
+        // star
+        for (int j = 1; j <= n - i; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+
+        space += 2;
+    }
+}
 int main()
 {
-    pattern19(4);
+    pattern20(4);
     return 0;
 }
