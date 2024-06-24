@@ -220,6 +220,28 @@ void pattern20(int n)
 
         space += 2;
     }
+
+    space = 2*n;
+
+    for (int i = 0; i < n; i++)
+    {
+        // star
+        for (int j = 1; j <= n - i; j++)
+        {
+            cout << "*";
+        }
+        // space
+        for (int j = 1; j <= space; j++)
+            cout << " ";
+        // star
+        for (int j = 1; j <= n - i; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+
+        space += 2;
+    }
 }
 int main()
 {
