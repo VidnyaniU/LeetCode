@@ -32,3 +32,10 @@ vector<vector<int>> imageSmoother(vector<vector<int>> &img)
 
     return ans;
 }
+
+int main()
+{
+    vector<vector<int>> img = img = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+    imageSmoother(img);
+    return 0;
+}
