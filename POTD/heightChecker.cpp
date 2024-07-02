@@ -14,6 +14,8 @@ int heightChecker(vector<int> &heights)
 }
 int main()
 {
+    vector<int> heights = {1, 1, 2, 1, 4, 1};
+    cout << heightChecker(heights) << endl;
 
     return 0;
 }
