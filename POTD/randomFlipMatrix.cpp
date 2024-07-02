@@ -25,7 +25,7 @@ public:
         }
         else
             last_row = 0, last_col = 0;
-
+        // cout << "ROW :: " << ROW << "COL :: " << COL << endl;
         return {ROW, COL};
     }
 
@@ -35,6 +35,14 @@ public:
 };
 int main()
 {
+    // ["Solution","flip","flip","flip","reset","flip"];
+
+    Solution soln(3, 1);
+    soln.flip();
+    soln.flip();
+    soln.flip();
+    soln.reset();
+    soln.flip();
 
     return 0;
 }
