@@ -3,15 +3,15 @@
 
 int main()
 {
-    ListNode ll(2);
+    // ListNode ll(2);
     // Node *head = new Node(2); // object of node
     // cout << head->data << " " << head->next << endl;
 
     // int cnt = 0;
 
     // convert array to linked list
-    vector<int> arr = {2, 4, 5, 6};
-    ListNode *head = ll.convertArrToLL(arr);
+    // vector<int> arr = {2, 4, 5, 6};
+    // ListNode *head = ll.convertArrToLL(arr);
 
     // traverse the linkedlist
     // Node *temp = head; // DO NOT TAMPER THE HEAD
@@ -29,10 +29,21 @@ int main()
 
     // head = deleteFromTail(head);
     // head = deleteK(head, 3);
-    head = ll.insertAtHead(head, 100);
-    head = ll.insertAtTail(head, 200);
-    head = ll.insertAtK(head, 150, 4);
+    // head = ll.insertAtHead(head, 100);
+    // head = ll.insertAtTail(head, 200);
+    // head = ll.insertAtK(head, 150, 4);
+    // ll.printLL(head);
+
+    ListNode ll(0);
+    ListNode *head = ll.insertAtTail(head, 0);
+    ll.insertAtTail(head, 1);
+    ll.insertAtTail(head, 3);
+    ll.insertAtTail(head, 0);
+    ll.insertAtTail(head, 4);
+    ll.insertAtTail(head, 5);
+
     ll.printLL(head);
+    
 
     return 0;
 }
