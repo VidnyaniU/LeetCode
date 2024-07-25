@@ -1,6 +1,9 @@
+//import javax.swing.tree.TreeNode;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 class Node{
     int data;
@@ -40,7 +43,33 @@ public class BinaryTree {
         System.out.print(root.data + " ");
 
     }
+    static List<List<Integer>> levelorder(Node root){
+        Queue<Node> queue = new LinkedList<Node>();
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
 
+        if(root == null) return res;
+
+        queue.add(root);
+        while(!queue.isEmpty()){
+
+            int levelNum = queue.size();
+            List<Integer>sublist = new LinkedList<Integer>();
+
+            for (int i = 0; i < levelNum; i++) {
+                Node node= queue.poll();
+                sublist.add(node.data);
+
+                if(node.left != null)queue.add(node.left);
+                if(node.right != null)queue.add(node.right);
+
+
+            }
+
+            res.add(sublist);
+        }
+        return res;
+
+    }
     //height of binary tree(or maximum depth) : number of nodes on the longest path from root to leaf
 
     //diameter of the binary tree
