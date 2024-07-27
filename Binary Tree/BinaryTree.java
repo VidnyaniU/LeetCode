@@ -1,6 +1,3 @@
-//import javax.swing.tree.TreeNode;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -71,7 +68,13 @@ public class BinaryTree {
 
     }
     //height of binary tree(or maximum depth) : number of nodes on the longest path from root to leaf
+    public static int maxDepth(Node root){
+        if(root == null)return 0;
+        int lh = maxDepth(root.left);
+        int rh = maxDepth(root.right);
 
+        return  1 + Math.max(lh , rh);
+    }
     //diameter of the binary tree
     //BRUTE FORCE
     static int diameter = 0 ;
