@@ -16,6 +16,7 @@ void decToBinary(int n)
         cout << res[i];
     }
 }
+
 int main()
 {
     int num = 13;
