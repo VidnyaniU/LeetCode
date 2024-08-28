@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // Topological sort using Kahn's algorithm
-vector<int> topoSort(int V, vector<int> adj[])
+vector<int> topoSortKahn(int V, vector<int> adj[])
 {
     // indegree list
     int indegree[V] = {0};
@@ -39,10 +39,4 @@ vector<int> topoSort(int V, vector<int> adj[])
     }
 
     return topo;
-}
-
-int main()
-{
-
-    return 0;
 }
