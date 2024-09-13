@@ -1,5 +1,5 @@
-
 #include "binaryTree.hpp"
+using namespace std;
 
 TreeNode *searchBST(TreeNode *root, int val)
 {
