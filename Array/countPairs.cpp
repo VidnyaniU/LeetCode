@@ -2,18 +2,25 @@
 using namespace std;
 int countPairs(vector<int> &arr, int target)
 {
-    int i = 0, j = 0;
-    int sum = 0, count = 0;
-    while (j < arr.size())
+
+    unordered_map<int, int> freq;
+    int count = 0;
+
+    for (int i = 0; i < arr.size(); i++)
     {
-        sum = arr[i] + arr[j];
-        if (sum == target)
+        // Find complement (target - arr[i])
+        int complement = target - arr[i];
+
+        // If complement exists in the map, it means we found a pair
+        if (freq.find(complement) != freq.end())
         {
-            count++;
-            i++;
+            count += freq[complement]; // Add the frequency of complement
         }
-        j++;
+
+        // Add the current element to the frequency map
+        freq[arr[i]]++;
     }
+
     return count;
 }
 int main()
