@@ -23,8 +23,3 @@ int countPairs(vector<int> &arr, int target)
 
     return count;
 }
-int main()
-{
-
-    return 0;
-}
